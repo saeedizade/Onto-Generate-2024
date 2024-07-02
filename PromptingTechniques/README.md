@@ -1,6 +1,6 @@
 # Propmts
 ## Memoryless CQbyCQ
-This is similar to (CQbyCQ)[https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/blob/main/Prompts/CQbyCQ.md] but 1- the {rdf} section, which refers to the previous interactions, is always empty. 2- the {story} does not contain all CQs (actually no CQ), and the current CQ is moved to {CQ} section. This causes a considerable reduction in the LLM's context.
+This is similar to (CQbyCQ)[github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/blob/main/Prompts/CQbyCQ.md] but 1- the {rdf} section, which refers to the previous interactions, is always empty. 2- the {story} does not contain all CQs (actually no CQ), and the current CQ is moved to {CQ} section. This causes a considerable reduction in the LLM's context.
 
 ```python
 """Your task is to contribute to creating a piece of well-structured ontology by reading information that appeared in the given story, requirements, and restrictions (if there are any).
