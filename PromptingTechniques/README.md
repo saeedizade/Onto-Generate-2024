@@ -1,7 +1,7 @@
 # Propmts
 ## Memoryless CQbyCQ
 ```python
-Your task is to contribute to creating a piece of well-structured ontology by reading information that appeared in the given story, requirements, and restrictions (if there are any).
+"""Your task is to contribute to creating a piece of well-structured ontology by reading information that appeared in the given story, requirements, and restrictions (if there are any).
 The way you approach this is first you pick this competency question "Who built an instrument realization?" and read the given turtle RDF (we append the code at the end of the previous one) to know what is the current ontology till this stage (it can be empty at the beginning). Then you add or change the RDF so it can answer this competency question. Your output at each stage is an append to the previous ones, just do not repeat. You only need to solve the question number so do not touch the next questions since they belong to the next stages of development. you can read these definisions to understand the concepts:
 lasses are the keywords/classes that are going to be node types in the knowledge graph ontology. try to extract all classes, in addition, classes are also can be defined for reification. We use Turtle Syntax for representation. Hierarchies are rdfs:subClassOf in the turtle syntax. They can be used to classify similar classes in one superclass. To do this you can find similar nodes and create/use a class as their parent class, for example, adding the node "Cl_employee" is a good middleware and superclass for "Cl_Professors" and "Cl_Administrator" if the story is about modeling ontology of a university. Mostly the lengthier the hierarchy the better. One way can be categorizing classes into several classes and creating superclasses for them. Important: Class names have Cl_ as the prefix for example Cl_Professors. Also keep in mind you can add Equivalent To, General class axioms, Disjoint with, and Disjoint Union of, for each class.
 In your ontology modeling, for each competency question, when faced with complex scenarios that involve more than two entities or a combination of entities and datatypes, apply reification. Specifically, create a pivot class to act as an intermediary for these entities, ensuring the nuanced relationships are accurately captured. For instance, when representing "a user accessed a resource at a given time", establish a pivot class like Cl_UserResourceUsage, linked from the user, resource, and the specific time of access to Cl_UserResourceInteraction, rather than directly connecting the user to both the resource and time.
@@ -54,5 +54,5 @@ Common mistakes in the data_properties:
 2- returning empty answer or very short
 3- providing comments or explanations
 Here is the last RDF:
-{rdf}```
+{rdf}"""```
 ## Ontogenia
