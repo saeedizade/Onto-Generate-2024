@@ -1,0 +1,1184 @@
+
+@prefix : <http://www.example.org/ontology/music#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix agentrole: <http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#> .
+@prefix time: <http://www.w3.org/2006/time/> .
+@prefix partof: <http://www.ontologydesignpatterns.org/cp/owl/partof.owl> .
+
+<http://www.example.org/ontology/music> rdf:type owl:Ontology ;
+                                       rdfs:comment "An ontology for representing information about musical bands, their members, and the instruments they play."@en .
+
+### Classes
+
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf agentrole:Agent ;
+        rdfs:label "Person"@en ;
+        rdfs:comment "An individual human being."@en .
+
+:Instrument rdf:type owl:Class ;
+            rdfs:label "Musical Instrument"@en ;
+            rdfs:comment "A device created or adapted to make musical sounds."@en .
+
+:Band rdf:type owl:Class ;
+      rdfs:label "Musical Band"@en ;
+      rdfs:comment "A group of individuals who perform music together."@en .
+
+:Role rdf:type owl:Class ;
+      rdfs:subClassOf agentrole:Role ;
+      rdfs:label "Role"@en ;
+      rdfs:comment "A function or part performed especially in a particular operation or process."@en .
+
+:Vocalist rdf:type owl:Class ;
+          rdfs:subClassOf :Role ;
+          rdfs:label "Vocalist"@en ;
+          rdfs:comment "A musician whose instrument is their voice."@en .
+
+:Instrumentalist rdf:type owl:Class ;
+                 rdfs:subClassOf :Role ;
+                 rdfs:label "Instrumentalist"@en ;
+                 rdfs:comment "A musician who plays a musical instrument."@en .
+
+### Object Properties
+
+:playsInstrument rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Person ;
+                 rdfs:range :Instrument ;
+                 rdfs:label "plays instrument"@en ;
+                 rdfs:comment "Indicates the instrument that a person plays."@en .
+
+:memberOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :Person ;
+          rdfs:range :Band ;
+          rdfs:label "member of"@en ;
+          rdfs:comment "Indicates the band that a person is a member of."@en .
+
+:hasMember rdf:type owl:ObjectProperty ;
+           owl:inverseOf :memberOf ;
+           rdfs:domain :Band ;
+           rdfs:range :Person ;
+           rdfs:label "has member"@en ;
+           rdfs:comment "Indicates a person who is a member of a band."@en .
+
+:hasRole rdf:type owl:ObjectProperty ;
+         rdfs:domain :Person ;
+         rdfs:range :Role ;
+         rdfs:label "has role"@en ;
+         rdfs:comment "Indicates the role of a person within a context, such as a band."@en .
+
+### Individuals
+
+:AnthonyKiedis rdf:type :Person ;
+               rdfs:label "Anthony Kiedis"@en .
+
+:Flea rdf:type :Person ;
+      rdfs:label "Flea"@en .
+
+:JohnFrusciante rdf:type :Person ;
+                rdfs:label "John Frusciante"@en .
+
+:ChadSmith rdf:type :Person ;
+           rdfs:label "Chad Smith"@en .
+
+:Vocals rdf:type :Instrument ;
+        rdfs:label "Vocals"@en .
+
+:Bass rdf:type :Instrument ;
+      rdfs:label "Bass Guitar"@en .
+
+:Trumpet rdf:type :Instrument ;
+         rdfs:label "Trumpet"@en .
+
+:Keyboards rdf:type :Instrument ;
+           rdfs:label "Keyboards"@en .
+
+:Guitar rdf:type :Instrument ;
+        rdfs:label "Guitar"@en .
+
+:Drums rdf:type :Instrument ;
+       rdfs:label "Drums"@en .
+
+:RedHotChiliPeppers rdf:type :Band ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+### Relationships
+
+:AnthonyKiedis :playsInstrument :Vocals ;
+               :memberOf :RedHotChiliPeppers .
+
+:Flea :playsInstrument :Bass ;
+      :playsInstrument :Trumpet ;
+      :playsInstrument :Keyboards ;
+      :playsInstrument :Vocals ;
+      :memberOf :RedHotChiliPeppers .
+
+:JohnFrusciante :playsInstrument :Guitar ;
+                 :memberOf :RedHotChiliPeppers .
+
+:ChadSmith :playsInstrument :Drums ;
+            :memberOf :RedHotChiliPeppers .
+
+### Classes
+
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf agentrole:Agent ;
+        rdfs:label "Person"@en ;
+        rdfs:comment "An individual human being."@en .
+
+:Instrument rdf:type owl:Class ;
+            rdfs:label "Musical Instrument"@en ;
+            rdfs:comment "A device created or adapted to make musical sounds."@en .
+
+:Band rdf:type owl:Class ;
+      rdfs:label "Musical Band"@en ;
+      rdfs:comment "A group of individuals who perform music together."@en .
+
+:Role rdf:type owl:Class ;
+      rdfs:subClassOf agentrole:Role ;
+      rdfs:label "Role"@en ;
+      rdfs:comment "A function or part performed especially in a particular operation or process."@en .
+
+:Vocalist rdf:type owl:Class ;
+          rdfs:subClassOf :Role ;
+          rdfs:label "Vocalist"@en ;
+          rdfs:comment "A musician whose instrument is their voice."@en .
+
+:Instrumentalist rdf:type owl:Class ;
+                 rdfs:subClassOf :Role ;
+                 rdfs:label "Instrumentalist"@en ;
+                 rdfs:comment "A musician who plays a musical instrument."@en .
+
+:BandMembership rdf:type owl:Class ;
+                rdfs:label "Band Membership"@en ;
+                rdfs:comment "A relationship class for representing the membership of a person in a band at a certain point in time."@en .
+
+### Object Properties
+
+:playsInstrument rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Person ;
+                 rdfs:range :Instrument ;
+                 rdfs:label "plays instrument"@en ;
+                 rdfs:comment "Indicates the instrument that a person plays."@en .
+
+:memberOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :Person ;
+          rdfs:range :Band ;
+          rdfs:label "member of"@en ;
+          rdfs:comment "Indicates the band that a person is a member of."@en .
+
+:hasMember rdf:type owl:ObjectProperty ;
+           owl:inverseOf :memberOf ;
+           rdfs:domain :Band ;
+           rdfs:range :Person ;
+           rdfs:label "has member"@en ;
+           rdfs:comment "Indicates a person who is a member of a band."@en .
+
+:hasRole rdf:type owl:ObjectProperty ;
+         rdfs:domain :Person ;
+         rdfs:range :Role ;
+         rdfs:label "has role"@en ;
+         rdfs:comment "Indicates the role of a person within a context, such as a band."@en .
+
+:hasMembership rdf:type owl:ObjectProperty ;
+               rdfs:domain :Person ;
+               rdfs:range :BandMembership ;
+               rdfs:label "has membership"@en ;
+               rdfs:comment "Connects a person to a band membership, which includes temporal information."@en .
+
+:membershipInBand rdf:type owl:ObjectProperty ;
+                  rdfs:domain :BandMembership ;
+                  rdfs:range :Band ;
+                  rdfs:label "membership in band"@en ;
+                  rdfs:comment "Connects a band membership to the band."@en .
+
+:memberDuring rdf:type owl:ObjectProperty ;
+              rdfs:domain :BandMembership ;
+              rdfs:range time:Interval ;
+              rdfs:label "member during"@en ;
+              rdfs:comment "Connects a band membership to the time interval during which the membership is valid."@en .
+
+### Datatype Properties
+
+:hasBeginDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain time:Interval ;
+              rdfs:range xsd:date ;
+              rdfs:label "has begin date"@en ;
+              rdfs:comment "Indicates the start date of a time interval."@en .
+
+:hasEndDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain time:Interval ;
+            rdfs:range xsd:date ;
+            rdfs:label "has end date"@en ;
+            rdfs:comment "Indicates the end date of a time interval."@en .
+
+### Individuals
+
+:AnthonyKiedis rdf:type :Person ;
+               rdfs:label "Anthony Kiedis"@en .
+
+:Flea rdf:type :Person ;
+      rdfs:label "Flea"@en .
+
+:JohnFrusciante rdf:type :Person ;
+                rdfs:label "John Frusciante"@en .
+
+:ChadSmith rdf:type :Person ;
+           rdfs:label "Chad Smith"@en .
+
+:Vocals rdf:type :Instrument ;
+        rdfs:label "Vocals"@en .
+
+:Bass rdf:type :Instrument ;
+      rdfs:label "Bass Guitar"@en .
+
+:Trumpet rdf:type :Instrument ;
+         rdfs:label "Trumpet"@en .
+
+:Keyboards rdf:type :Instrument ;
+           rdfs:label "Keyboards"@en .
+
+:Guitar rdf:type :Instrument ;
+        rdfs:label "Guitar"@en .
+
+:Drums rdf:type :Instrument ;
+       rdfs:label "Drums"@en .
+
+:RedHotChiliPeppers rdf:type :Band ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+### Relationships and Time Intervals
+
+:AnthonyKiedisMembership rdf:type :BandMembership ;
+                         :membershipInBand :RedHotChiliPeppers ;
+                         :memberDuring :AnthonyKiedisTimeInterval .
+
+:AnthonyKiedisTimeInterval rdf:type time:Interval ;
+                           :hasBeginDate "1983-01-01"^^xsd:date ; # Assuming start year of the band
+                           :hasEndDate "9999-12-31"^^xsd:date . # Open end date for ongoing membership
+
+:FleaMembership rdf:type :BandMembership ;
+                :membershipInBand :RedHotChiliPeppers ;
+                :memberDuring :FleaTimeInterval .
+
+:FleaTimeInterval rdf:type time:Interval ;
+                  :hasBeginDate "1983-01-01"^^xsd:date ; # Assuming start year of the band
+                  :hasEndDate "9999-12-31"^^xsd:date . # Open end date for ongoing membership
+
+:JohnFruscianteMembership rdf:type :BandMembership ;
+                          :membershipInBand :RedHotChiliPeppers ;
+                          :memberDuring :JohnFruscianteTimeInterval .
+
+:JohnFruscianteTimeInterval rdf:type time:Interval ;
+                            :hasBeginDate "1988-01-01"^^xsd:date ; # The year John Frusciante joined the band
+                            :hasEndDate "9999-12-31"^^xsd:date . # Open end date for ongoing membership
+
+:ChadSmithMembership rdf:type :BandMembership ;
+                     :membershipInBand :RedHotChiliPeppers ;
+                     :memberDuring :ChadSmithTimeInterval .
+
+:ChadSmithTimeInterval rdf:type time:Interval ;
+                       :hasBeginDate "1988-01-01"^^xsd:date ; # The year Chad Smith joined the band
+                       :hasEndDate "9999-12-31"^^xsd:date . # Open end date for ongoing membership
+
+### Assigning Roles and Instruments
+
+:AnthonyKiedis :playsInstrument :Vocals ;
+               :hasMembership :AnthonyKiedisMembership ;
+               :hasRole :Vocalist .
+
+:Flea :playsInstrument :Bass ;
+      :playsInstrument :Trumpet ;
+      :playsInstrument :Keyboards ;
+      :playsInstrument :Vocals ;
+      :hasMembership :FleaMembership ;
+      :hasRole :Instrumentalist ;
+      :hasRole :Vocalist .
+
+:JohnFrusciante :playsInstrument :Guitar ;
+                 :hasMembership :JohnFruscianteMembership ;
+                 :hasRole :Instrumentalist .
+
+:ChadSmith :playsInstrument :Drums ;
+            :hasMembership :ChadSmithMembership ;
+            :hasRole :Instrumentalist .
+
+
+
+### Classes
+
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf agentrole:Agent ;
+        rdfs:label "Person"@en ;
+        rdfs:comment "An individual human being."@en .
+
+:Instrument rdf:type owl:Class ;
+            rdfs:label "Musical Instrument"@en ;
+            rdfs:comment "A device created or adapted to make musical sounds."@en .
+
+:Band rdf:type owl:Class ;
+      rdfs:label "Musical Band"@en ;
+      rdfs:comment "A group of individuals who perform music together."@en .
+
+:Role rdf:type owl:Class ;
+      rdfs:subClassOf agentrole:Role ;
+      rdfs:label "Role"@en ;
+      rdfs:comment "A function or part performed especially in a particular operation or process."@en .
+
+:Vocalist rdf:type owl:Class ;
+          rdfs:subClassOf :Role ;
+          rdfs:label "Vocalist"@en ;
+          rdfs:comment "A musician whose instrument is their voice."@en .
+
+:Instrumentalist rdf:type owl:Class ;
+                 rdfs:subClassOf :Role ;
+                 rdfs:label "Instrumentalist"@en ;
+                 rdfs:comment "A musician who plays a musical instrument."@en .
+
+:BandMembership rdf:type owl:Class ;
+                rdfs:label "Band Membership"@en ;
+                rdfs:comment "A relationship class for representing the membership of a person in a band at a certain point in time."@en .
+
+### Object Properties
+
+:playsInstrument rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Person ;
+                 rdfs:range :Instrument ;
+                 rdfs:label "plays instrument"@en ;
+                 rdfs:comment "Indicates the instrument that a person plays."@en .
+
+:memberOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :Person ;
+          rdfs:range :Band ;
+          rdfs:label "member of"@en ;
+          rdfs:comment "Indicates the band that a person is a member of."@en .
+
+:hasMember rdf:type owl:ObjectProperty ;
+           owl:inverseOf :memberOf ;
+           rdfs:domain :Band ;
+           rdfs:range :Person ;
+           rdfs:label "has member"@en ;
+           rdfs:comment "Indicates a person who is a member of a band."@en .
+
+:hasRole rdf:type owl:ObjectProperty ;
+         rdfs:domain :Person ;
+         rdfs:range :Role ;
+         rdfs:label "has role"@en ;
+         rdfs:comment "Indicates the role of a person within a context, such as a band."@en .
+
+:hasMembership rdf:type owl:ObjectProperty ;
+               rdfs:domain :Person ;
+               rdfs:range :BandMembership ;
+               rdfs:label "has membership"@en ;
+               rdfs:comment "Connects a person to a band membership, which includes temporal information."@en .
+
+:membershipInBand rdf:type owl:ObjectProperty ;
+                  rdfs:domain :BandMembership ;
+                  rdfs:range :Band ;
+                  rdfs:label "membership in band"@en ;
+                  rdfs:comment "Connects a band membership to the band."@en .
+
+:memberDuring rdf:type owl:ObjectProperty ;
+              rdfs:domain :BandMembership ;
+              rdfs:range time:Interval ;
+              rdfs:label "member during"@en ;
+              rdfs:comment "Connects a band membership to the time interval during which the membership is valid."@en .
+
+### Datatype Properties
+
+:hasBeginDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain time:Interval ;
+              rdfs:range xsd:date ;
+              rdfs:label "has begin date"@en ;
+              rdfs:comment "Indicates the start date of a time interval."@en .
+
+:hasEndDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain time:Interval ;
+            rdfs:range xsd:date ;
+            rdfs:label "has end date"@en ;
+            rdfs:comment "Indicates the end date of a time interval."@en .
+
+### Individuals
+
+:AnthonyKiedis rdf:type :Person ;
+               rdfs:label "Anthony Kiedis"@en .
+
+:Flea rdf:type :Person ;
+      rdfs:label "Flea"@en .
+
+:JohnFrusciante rdf:type :Person ;
+                rdfs:label "John Frusciante"@en .
+
+:ChadSmith rdf:type :Person ;
+           rdfs:label "Chad Smith"@en .
+
+:Vocals rdf:type :Instrument ;
+        rdfs:label "Vocals"@en .
+
+:Bass rdf:type :Instrument ;
+      rdfs:label "Bass Guitar"@en .
+
+:Trumpet rdf:type :Instrument ;
+         rdfs:label "Trumpet"@en .
+
+:Keyboards rdf:type :Instrument ;
+           rdfs:label "Keyboards"@en .
+
+:Guitar rdf:type :Instrument ;
+        rdfs:label "Guitar"@en .
+
+:Drums rdf:type :Instrument ;
+       rdfs:label "Drums"@en .
+
+:RedHotChiliPeppers rdf:type :Band ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+### Relationships and Time Intervals
+
+:AnthonyKiedisMembership rdf:type :BandMembership ;
+                         :membershipInBand :RedHotChiliPeppers ;
+                         :memberDuring :AnthonyKiedisTimeInterval .
+
+:AnthonyKiedisTimeInterval rdf:type time:Interval ;
+                           :hasBeginDate "1983-01-01"^^xsd:date ; # Assuming start year of the band
+                           :hasEndDate "9999-12-31"^^xsd:date . # Open end date for ongoing membership
+
+:FleaMembership rdf:type :BandMembership ;
+                :membershipInBand :RedHotChiliPeppers ;
+                :memberDuring :FleaTimeInterval .
+
+:FleaTimeInterval rdf:type time:Interval ;
+                  :hasBeginDate "1983-01-01"^^xsd:date ; # Assuming start year of the band
+                  :hasEndDate "9999-12-31"^^xsd:date . # Open end date for ongoing membership
+
+:JohnFruscianteMembership rdf:type :BandMembership ;
+                          :membershipInBand :RedHotChiliPeppers ;
+                          :memberDuring :JohnFruscianteTimeInterval .
+
+:JohnFruscianteTimeInterval rdf:type time:Interval ;
+                            :hasBeginDate "1988-01-01"^^xsd:date ; # The year John Frusciante joined the band
+                            :hasEndDate "9999-12-31"^^xsd:date . # Open end date for ongoing membership
+
+:ChadSmithMembership rdf:type :BandMembership ;
+                     :membershipInBand :RedHotChiliPeppers ;
+                     :memberDuring :ChadSmithTimeInterval .
+
+:ChadSmithTimeInterval rdf:type time:Interval ;
+                       :hasBeginDate "1988-01-01"^^xsd:date ; # The year Chad Smith joined the band
+                       :hasEndDate "9999-12-31"^^xsd:date . # Open end date for ongoing membership
+
+### Assigning Roles and Instruments
+
+:AnthonyKiedis :playsInstrument :Vocals ;
+               :hasMembership :AnthonyKiedisMembership ;
+               :hasRole :Vocalist .
+
+:Flea :playsInstrument :Bass ;
+      :playsInstrument :Trumpet ;
+      :playsInstrument :Keyboards ;
+      :playsInstrument :Vocals ;
+      :hasMembership :FleaMembership ;
+      :hasRole :Instrumentalist ;
+      :hasRole :Vocalist .
+
+:JohnFrusciante :playsInstrument :Guitar ;
+                 :hasMembership :JohnFruscianteMembership ;
+                 :hasRole :Instrumentalist .
+
+:ChadSmith :playsInstrument :Drums ;
+            :hasMembership :ChadSmithMembership ;
+            :hasRole :Instrumentalist .
+
+### Classes
+
+:MusicGroup rdf:type owl:Class ;
+            rdfs:label "Music Group"@en ;
+            rdfs:comment "A group of people who play music together."@en .
+
+:Album rdf:type owl:Class ;
+       rdfs:label "Album"@en ;
+       rdfs:comment "A collection of recorded music."@en .
+
+:RecordingSession rdf:type owl:Class ;
+                  rdfs:label "Recording Session"@en ;
+                  rdfs:comment "A period during which an album is recorded."@en .
+
+:TimeInterval rdf:type owl:Class ;
+              rdfs:subClassOf time:TemporalEntity ;
+              rdfs:label "Time Interval"@en ;
+              rdfs:comment "A time interval with a beginning and an end."@en .
+
+### Object Properties
+
+:hasRecordingSession rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Album ;
+                     rdfs:range :RecordingSession ;
+                     rdfs:label "has recording session"@en ;
+                     rdfs:comment "Associates an album with its recording session."@en .
+
+:recordedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Album ;
+            rdfs:range :MusicGroup ;
+            rdfs:label "recorded by"@en ;
+            rdfs:comment "Associates an album with the music group that recorded it."@en .
+
+:hasTimeInterval rdf:type owl:ObjectProperty ;
+                 rdfs:domain :RecordingSession ;
+                 rdfs:range :TimeInterval ;
+                 rdfs:label "has time interval"@en ;
+                 rdfs:comment "Associates a recording session with the time interval during which it occurred."@en .
+
+### Datatype Properties
+
+:hasStartDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain :TimeInterval ;
+              rdfs:range xsd:date ;
+              rdfs:label "has start date"@en ;
+              rdfs:comment "Indicates the start date of a time interval."@en .
+
+:hasEndDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain :TimeInterval ;
+            rdfs:range xsd:date ;
+            rdfs:label "has end date"@en ;
+            rdfs:comment "Indicates the end date of a time interval."@en .
+
+### Individuals
+
+:RedHotChiliPeppers rdf:type :MusicGroup ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+:StadiumArcadium rdf:type :Album ;
+                 rdfs:label "Stadium Arcadium"@en ;
+                 :recordedBy :RedHotChiliPeppers .
+
+:StadiumArcadiumRecording rdf:type :RecordingSession ;
+                          :hasTimeInterval :StadiumArcadiumRecordingInterval .
+
+:StadiumArcadiumRecordingInterval rdf:type :TimeInterval ;
+                                  :hasStartDate "2004-09-01"^^xsd:date ;
+                                  :hasEndDate "2006-05-05"^^xsd:date .
+
+### Relationships
+
+:StadiumArcadium :hasRecordingSession :StadiumArcadiumRecording .
+
+
+### Classes
+
+:MusicGroup rdf:type owl:Class ;
+            rdfs:label "Music Group"@en ;
+            rdfs:comment "A group of people who play music together."@en .
+
+:Album rdf:type owl:Class ;
+       rdfs:label "Album"@en ;
+       rdfs:comment "A collection of recorded music, usually consisting of multiple tracks."@en .
+
+:Track rdf:type owl:Class ;
+       rdfs:label "Track"@en ;
+       rdfs:comment "A single song or piece of music on an album."@en .
+
+### Object Properties
+
+:recordedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Album ;
+            rdfs:range :MusicGroup ;
+            rdfs:label "recorded by"@en ;
+            rdfs:comment "Associates an album with the music group that recorded it."@en .
+
+:hasTrack rdf:type owl:ObjectProperty ;
+          rdfs:domain :Album ;
+          rdfs:range :Track ;
+          rdfs:label "has track"@en ;
+          rdfs:comment "Associates an album with one of its tracks."@en .
+
+### Datatype Properties
+
+:numberOfTracks rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Album ;
+                rdfs:range xsd:nonNegativeInteger ;
+                rdfs:label "number of tracks"@en ;
+                rdfs:comment "Indicates the total number of tracks on an album."@en .
+
+### Individuals
+
+:RedHotChiliPeppers rdf:type :MusicGroup ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+:StadiumArcadium rdf:type :Album ;
+                 rdfs:label "Stadium Arcadium"@en ;
+                 :recordedBy :RedHotChiliPeppers ;
+                 :numberOfTracks "28"^^xsd:nonNegativeInteger .
+
+### Example Track (not exhaustive)
+
+:HumpDeBump rdf:type :Track ;
+            rdfs:label "Hump de Bump"@en .
+
+### Relationships
+
+:StadiumArcadium :hasTrack :HumpDeBump .
+
+
+### Classes
+
+:MusicGroup rdf:type owl:Class ;
+            rdfs:label "Music Group"@en ;
+            rdfs:comment "A group of people who play music together."@en .
+
+:Album rdf:type owl:Class ;
+       rdfs:label "Album"@en ;
+       rdfs:comment "A collection of recorded music, usually consisting of multiple tracks."@en .
+
+:RecordingSession rdf:type owl:Class ;
+                  rdfs:label "Recording Session"@en ;
+                  rdfs:comment "A period during which an album is recorded."@en .
+
+:TimeInterval rdf:type owl:Class ;
+              rdfs:subClassOf time:TemporalEntity ;
+              rdfs:label "Time Interval"@en ;
+              rdfs:comment "A time interval with a beginning and an end."@en .
+
+### Object Properties
+
+:recordedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Album ;
+            rdfs:range :MusicGroup ;
+            rdfs:label "recorded by"@en ;
+            rdfs:comment "Associates an album with the music group that recorded it."@en .
+
+:hasRecordingSession rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Album ;
+                     rdfs:range :RecordingSession ;
+                     rdfs:label "has recording session"@en ;
+                     rdfs:comment "Associates an album with its recording session."@en .
+
+:hasTimeInterval rdf:type owl:ObjectProperty ;
+                 rdfs:domain :RecordingSession ;
+                 rdfs:range :TimeInterval ;
+                 rdfs:label "has time interval"@en ;
+                 rdfs:comment "Associates a recording session with the time interval during which it occurred."@en .
+
+### Datatype Properties
+
+:hasReleaseDate rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Album ;
+                rdfs:range xsd:date ;
+                rdfs:label "has release date"@en ;
+                rdfs:comment "Indicates the release date of an album."@en .
+
+:hasStartDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain :TimeInterval ;
+              rdfs:range xsd:date ;
+              rdfs:label "has start date"@en ;
+              rdfs:comment "Indicates the start date of a time interval."@en .
+
+:hasEndDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain :TimeInterval ;
+            rdfs:range xsd:date ;
+            rdfs:label "has end date"@en ;
+            rdfs:comment "Indicates the end date of a time interval."@en .
+
+### Individuals
+
+:RedHotChiliPeppers rdf:type :MusicGroup ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+:StadiumArcadium rdf:type :Album ;
+                 rdfs:label "Stadium Arcadium"@en ;
+                 :recordedBy :RedHotChiliPeppers ;
+                 :hasReleaseDate "2006-05-05"^^xsd:date .
+
+:StadiumArcadiumRecording rdf:type :RecordingSession ;
+                          :hasTimeInterval :StadiumArcadiumRecordingInterval .
+
+:StadiumArcadiumRecordingInterval rdf:type :TimeInterval ;
+                                  :hasStartDate "2004-09-01"^^xsd:date ;
+                                  :hasEndDate "2006-05-05"^^xsd:date .
+
+### Relationships
+
+:StadiumArcadium :hasRecordingSession :StadiumArcadiumRecording .
+
+
+### Classes
+
+:MusicGroup rdf:type owl:Class ;
+            rdfs:label "Music Group"@en ;
+            rdfs:comment "A group of people who play music together."@en .
+
+:Album rdf:type owl:Class ;
+       rdfs:label "Album"@en ;
+       rdfs:comment "A collection of recorded music, usually consisting of multiple tracks."@en .
+
+:Track rdf:type owl:Class ;
+       rdfs:label "Track"@en ;
+       rdfs:comment "A single song or piece of music on an album."@en .
+
+### Object Properties
+
+:recordedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Album ;
+            rdfs:range :MusicGroup ;
+            rdfs:label "recorded by"@en ;
+            rdfs:comment "Associates an album with the music group that recorded it."@en .
+
+:hasTrack rdf:type owl:ObjectProperty ;
+          rdfs:domain :Album ;
+          rdfs:range :Track ;
+          rdfs:label "has track"@en ;
+          rdfs:comment "Associates an album with one of its tracks."@en .
+
+### Datatype Properties
+
+:hasReleaseDate rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Album ;
+                rdfs:range xsd:date ;
+                rdfs:label "has release date"@en ;
+                rdfs:comment "Indicates the release date of an album."@en .
+
+:composedOn rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Track ;
+            rdfs:range xsd:date ;
+            rdfs:label "composed on"@en ;
+            rdfs:comment "Indicates the date on which a track was composed."@en .
+
+### Individuals
+
+:RedHotChiliPeppers rdf:type :MusicGroup ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+:StadiumArcadium rdf:type :Album ;
+                 rdfs:label "Stadium Arcadium"@en ;
+                 :recordedBy :RedHotChiliPeppers ;
+                 :hasReleaseDate "2006-05-05"^^xsd:date .
+
+:HumpDeBump rdf:type :Track ;
+            rdfs:label "Hump de Bump"@en ;
+            :composedOn "2004-01-26"^^xsd:date .
+
+### Relationships
+
+:StadiumArcadium :hasTrack :HumpDeBump .
+
+
+### Classes
+
+:MusicGroup rdf:type owl:Class ;
+            rdfs:label "Music Group"@en ;
+            rdfs:comment "A group of people who play music together."@en .
+
+:Album rdf:type owl:Class ;
+       rdfs:label "Album"@en ;
+       rdfs:comment "A collection of recorded music, usually consisting of multiple tracks."@en .
+
+:Track rdf:type owl:Class ;
+       rdfs:label "Track"@en ;
+       rdfs:comment "A single song or piece of music on an album."@en .
+
+### Object Properties
+
+:recordedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Album ;
+            rdfs:range :MusicGroup ;
+            rdfs:label "recorded by"@en ;
+            rdfs:comment "Associates an album with the music group that recorded it."@en .
+
+:hasTrack rdf:type owl:ObjectProperty ;
+          rdfs:domain :Album ;
+          rdfs:range :Track ;
+          rdfs:label "has track"@en ;
+          rdfs:comment "Associates an album with one of its tracks."@en .
+
+### Datatype Properties
+
+:hasReleaseDate rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Album ;
+                rdfs:range xsd:date ;
+                rdfs:label "has release date"@en ;
+                rdfs:comment "Indicates the release date of an album."@en .
+
+:composedOn rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Track ;
+            rdfs:range xsd:date ;
+            rdfs:label "composed on"@en ;
+            rdfs:comment "Indicates the date on which a track was composed."@en .
+
+### Individuals
+
+:RedHotChiliPeppers rdf:type :MusicGroup ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+:StadiumArcadium rdf:type :Album ;
+                 rdfs:label "Stadium Arcadium"@en ;
+                 :recordedBy :RedHotChiliPeppers ;
+                 :hasReleaseDate "2006-05-05"^^xsd:date .
+
+:HumpDeBump rdf:type :Track ;
+            rdfs:label "Hump de Bump"@en ;
+            :composedOn "2004-01-26"^^xsd:date .
+
+### Relationships
+
+:StadiumArcadium :hasTrack :HumpDeBump .
+
+### Classes
+
+:Critic rdf:type owl:Class ;
+        rdfs:subClassOf agentrole:Agent ;
+        rdfs:label "Critic"@en ;
+        rdfs:comment "A person who writes reviews for music records."@en .
+
+:Record rdf:type owl:Class ;
+        rdfs:label "Record"@en ;
+        rdfs:comment "A music album or single."@en .
+
+:Review rdf:type owl:Class ;
+        rdfs:label "Review"@en ;
+        rdfs:comment "A critical assessment of a music record."@en .
+
+### Object Properties
+
+:hasReview rdf:type owl:ObjectProperty ;
+           rdfs:domain :Record ;
+           rdfs:range :Review ;
+           rdfs:label "has review"@en ;
+           rdfs:comment "Associates a music record with a review."@en .
+
+:reviewedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Review ;
+            rdfs:range :Critic ;
+            rdfs:label "reviewed by"@en ;
+            rdfs:comment "Indicates the critic who wrote the review."@en .
+
+:reviewOf rdf:type owl:ObjectProperty ;
+          owl:inverseOf :hasReview ;
+          rdfs:domain :Review ;
+          rdfs:range :Record ;
+          rdfs:label "review of"@en ;
+          rdfs:comment "Indicates the music record that the review assesses."@en .
+
+### Datatype Properties
+
+:hasContent rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Review ;
+            rdfs:range xsd:string ;
+            rdfs:label "has content"@en ;
+            rdfs:comment "The textual content of the review."@en .
+
+:hasDate rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Review ;
+         rdfs:range xsd:date ;
+         rdfs:label "has date"@en ;
+         rdfs:comment "The date when the review was published."@en .
+
+### Individuals
+
+:CrianHiatt rdf:type :Critic ;
+             rdfs:label "Crian Hiatt"@en .
+
+:StadiumArcadium rdf:type :Record ;
+                  rdfs:label "Stadium Arcadium"@en .
+
+:StadiumArcadiumReview rdf:type :Review ;
+                       :reviewedBy :CrianHiatt ;
+                       :reviewOf :StadiumArcadium ;
+                       :hasContent "The most ambitious work in his twenty-three-year career."@en ;
+                       :hasDate "2006-05-09"^^xsd:date . # Assuming the review was published after the album release
+
+### Relationships
+
+:StadiumArcadium :hasReview :StadiumArcadiumReview .
+
+
+### Classes
+
+:Performance rdf:type owl:Class ;
+             rdfs:label "Performance"@en ;
+             rdfs:comment "A live presentation of music."@en .
+
+:MusicGroup rdf:type owl:Class ;
+            rdfs:label "Music Group"@en ;
+            rdfs:comment "A group of people who play music together."@en .
+
+:Location rdf:type owl:Class ;
+          rdfs:label "Location"@en ;
+          rdfs:comment "A place where events occur."@en .
+
+:TimeInterval rdf:type owl:Class ;
+              rdfs:subClassOf time:TemporalEntity ;
+              rdfs:label "Time Interval"@en ;
+              rdfs:comment "A time interval with a beginning and an end."@en .
+
+### Object Properties
+
+:performedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Performance ;
+             rdfs:range :MusicGroup ;
+             rdfs:label "performed by"@en ;
+             rdfs:comment "Associates a performance with the music group that performed it."@en .
+
+:performedAt rdf:type owl:ObjectProperty ;
+             rdfs:domain :Performance ;
+             rdfs:range :Location ;
+             rdfs:label "performed at"@en ;
+             rdfs:comment "Associates a performance with its location."@en .
+
+:occurredDuring rdf:type owl:ObjectProperty ;
+                rdfs:domain :Performance ;
+                rdfs:range :TimeInterval ;
+                rdfs:label "occurred during"@en ;
+                rdfs:comment "Associates a performance with the time interval during which it occurred."@en .
+
+### Datatype Properties
+
+:hasDate rdf:type owl:DatatypeProperty ;
+         rdfs:domain :TimeInterval ;
+         rdfs:range xsd:date ;
+         rdfs:label "has date"@en ;
+         rdfs:comment "Indicates the specific date of an event."@en .
+
+### Individuals
+
+:RedHotChiliPeppers rdf:type :MusicGroup ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+:PortlandOregon rdf:type :Location ;
+                rdfs:label "Portland, Oregon"@en .
+
+:PortlandPerformanceTimeInterval rdf:type :TimeInterval ;
+                                 :hasDate "2006-08-11"^^xsd:date .
+
+:PortlandPerformance rdf:type :Performance ;
+                     :performedBy :RedHotChiliPeppers ;
+                     :performedAt :PortlandOregon ;
+                     :occurredDuring :PortlandPerformanceTimeInterval .
+
+### Relationships
+
+# The relationship between the performance, the music group, the location, and the time interval is established by the individuals and object properties above.
+
+
+### Classes
+
+:MusicGroup rdf:type owl:Class ;
+            rdfs:label "Music Group"@en ;
+            rdfs:comment "A group of people who play music together."@en .
+
+:Performance rdf:type owl:Class ;
+             rdfs:label "Performance"@en ;
+             rdfs:comment "A live presentation of music by a music group."@en .
+
+:Song rdf:type owl:Class ;
+      rdfs:label "Song"@en ;
+      rdfs:comment "A single piece of music performed by a music group."@en .
+
+### Object Properties
+
+:performedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Performance ;
+             rdfs:range :MusicGroup ;
+             rdfs:label "performed by"@en ;
+             rdfs:comment "Associates a performance with the music group that performed it."@en .
+
+:hasSong rdf:type owl:ObjectProperty ;
+         rdfs:domain :Performance ;
+         rdfs:range :Song ;
+         rdfs:label "has song"@en ;
+         rdfs:comment "Associates a performance with a song that was played during it."@en .
+
+### Datatype Properties
+
+:hasPerformanceDate rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Performance ;
+                    rdfs:range xsd:date ;
+                    rdfs:label "has performance date"@en ;
+                    rdfs:comment "Indicates the date on which the performance took place."@en .
+
+### Individuals
+
+:RedHotChiliPeppers rdf:type :MusicGroup ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+:PortlandPerformance rdf:type :Performance ;
+                     :performedBy :RedHotChiliPeppers ;
+                     :hasPerformanceDate "2006-08-11"^^xsd:date .
+
+:StadiumArcadium rdf:type :Album ;
+                 rdfs:label "Stadium Arcadium"@en .
+
+:HumpDeBump rdf:type :Song ;
+            rdfs:label "Hump de Bump"@en .
+
+### Relationships
+
+:PortlandPerformance :hasSong :HumpDeBump .
+
+# Additional songs performed during the Portland performance would be represented with similar :hasSong relationships.
+
+
+### Classes
+
+:MusicGroup rdf:type owl:Class ;
+            rdfs:label "Music Group"@en ;
+            rdfs:comment "A group of people who play music together."@en .
+
+:Performance rdf:type owl:Class ;
+             rdfs:label "Performance"@en ;
+             rdfs:comment "A live presentation of music by a music group."@en .
+
+:Location rdf:type owl:Class ;
+          rdfs:label "Location"@en ;
+          rdfs:comment "A place where events occur."@en .
+
+### Object Properties
+
+:performedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Performance ;
+             rdfs:range :MusicGroup ;
+             rdfs:label "performed by"@en ;
+             rdfs:comment "Associates a performance with the music group that performed it."@en .
+
+:performedAt rdf:type owl:ObjectProperty ;
+             rdfs:domain :Performance ;
+             rdfs:range :Location ;
+             rdfs:label "performed at"@en ;
+             rdfs:comment "Associates a performance with its location."@en .
+
+### Datatype Properties
+
+:hasPerformanceDate rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Performance ;
+                    rdfs:range xsd:date ;
+                    rdfs:label "has performance date"@en ;
+                    rdfs:comment "Indicates the date on which the performance took place."@en .
+
+### Individuals
+
+:RedHotChiliPeppers rdf:type :MusicGroup ;
+                     rdfs:label "Red Hot Chili Peppers"@en .
+
+:Portland rdf:type :Location ;
+          rdfs:label "Portland, Oregon"@en .
+
+:PortlandPerformance rdf:type :Performance ;
+                     :performedBy :RedHotChiliPeppers ;
+                     :performedAt :Portland ;
+                     :hasPerformanceDate "2006-08-11"^^xsd:date .
+
+### Relationships
+
+# The relationship between the performance, the music group, and the location is established by the individuals and object properties above.
+
+
+### Classes
+
+:City rdf:type owl:Class ;
+      rdfs:label "City"@en ;
+      rdfs:comment "A large human settlement, generally with extensive systems for housing, transportation, sanitation, utilities, land use, and communication."@en .
+
+:Region rdf:type owl:Class ;
+        rdfs:label "Region"@en ;
+        rdfs:comment "An area, especially part of a country or the world having definable characteristics but not always fixed boundaries."@en .
+
+### Object Properties
+
+:isLocatedIn rdf:type owl:ObjectProperty ;
+             rdfs:domain :City ;
+             rdfs:range :Region ;
+             rdfs:label "is located in"@en ;
+             rdfs:comment "Associates a city with the region it is located in."@en .
+
+### Individuals
+
+:Portland rdf:type :City ;
+          rdfs:label "Portland"@en .
+
+:Oregon rdf:type :Region ;
+        rdfs:label "Oregon"@en .
+
+### Relationships
+
+:Portland :isLocatedIn :Oregon .
+
+### Classes
+
+:City rdf:type owl:Class ;
+      rdfs:label "City"@en ;
+      rdfs:comment "A large human settlement, generally with extensive systems for housing, transportation, sanitation, utilities, land use, and communication."@en .
+
+:Region rdf:type owl:Class ;
+        rdfs:label "Region"@en ;
+        rdfs:comment "An area, especially part of a country or the world having definable characteristics but not always fixed boundaries."@en .
+
+:Country rdf:type owl:Class ;
+         rdfs:label "Country"@en ;
+         rdfs:comment "A distinct territorial body or political entity. It is often referred to as the land of an individual's birth, residence, or citizenship."@en .
+
+### Object Properties
+
+:isLocatedIn rdf:type owl:ObjectProperty ;
+             rdfs:domain :City ;
+             rdfs:range :Region ;
+             rdfs:label "is located in"@en ;
+             rdfs:comment "Associates a city with the region it is located in."@en .
+
+:isPartOf rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf partof:isPartOf ;
+          rdfs:domain :Region ;
+          rdfs:range :Country ;
+          rdfs:label "is part of"@en ;
+          rdfs:comment "Associates a region with the country it is part of."@en .
+
+### Individuals
+
+:Portland rdf:type :City ;
+          rdfs:label "Portland"@en .
+
+:Oregon rdf:type :Region ;
+        rdfs:label "Oregon"@en .
+
+:UnitedStates rdf:type :Country ;
+              rdfs:label "United States"@en .
+
+### Relationships
+
+:Portland :isLocatedIn :Oregon .
+:Oregon :isPartOf :UnitedStates .
+
+### Classes
+
+:MusicRecord rdf:type owl:Class ;
+             rdfs:label "Music Record"@en ;
+             rdfs:comment "A music record which can be an album, EP, or single, and contains at least one track."@en .
+
+:Track rdf:type owl:Class ;
+       rdfs:label "Track"@en ;
+       rdfs:comment "A single piece of music or song that is part of a music record."@en .
+
+### Object Properties
+
+:hasTrack rdf:type owl:ObjectProperty ;
+          rdfs:domain :MusicRecord ;
+          rdfs:range :Track ;
+          rdfs:label "has track"@en ;
+          rdfs:comment "Associates a music record with a track that it contains."@en .
+
+### Restrictions
+
+:MusicRecord rdfs:subClassOf [
+  rdf:type owl:Restriction ;
+  owl:onProperty :hasTrack ;
+  owl:someValuesFrom :Track ;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+] .
+
+### Example Individuals
+
+:StadiumArcadium rdf:type :MusicRecord ;
+                 rdfs:label "Stadium Arcadium"@en ;
+                 :hasTrack :HumpDeBump .
+
+:HumpDeBump rdf:type :Track ;
+            rdfs:label "Hump de Bump"@en .
