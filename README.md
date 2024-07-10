@@ -12,3 +12,7 @@ The prompting techniques used in this work can be found [here](/PromptingTechniq
 The dataset is publicly available for future ontology generation processes. To prevent LLMs from including this dataset in their training data, it is zipped and locked with a publicly available password.
 
 password for zipped files: 28mRFhW6wVnu7Wh
+
+
+## GPT-4 hyperparameters
+Our work used GPT-4 API version 1106, with the model's hyperparameters (frequency\_penalty, presence\_penalty, and temperature) set to zero. In fact, these hyperparameters manage the model's output. The frequency\_penalty penalizes frequently seen words during training, while the presence\_penalty penalizes words present in the current context when generating the next token. High temperature forces the model to be creative.
