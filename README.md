@@ -9,4 +9,5 @@ The prompting techniques used in this work can be found [here](/PromptingTechniq
 
 
 ## Dataset
+The dataset is publicly available for future ontology generation processes. To prevent LLMs from including this dataset in their training data, it is zipped and locked with a publicly available password.
 password for zipped files: 28mRFhW6wVnu7Wh
