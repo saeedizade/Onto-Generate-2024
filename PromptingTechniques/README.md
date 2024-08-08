@@ -75,6 +75,10 @@ Ontogenia is designed to handle one CQ at a time, generating and merging the res
 ### How It Works with Prompts
 
 #### Single CQ Ontology Design
+![Ontogenia methodology: Single-CQ process](ontogenia1.jpg)
+*Ontogenia methodology: Single-CQ process*
+
+
 
 1. **Procedure Definition:**
    The procedure is defined in a separated file:
@@ -119,6 +123,8 @@ Ontogenia is designed to handle one CQ at a time, generating and merging the res
     ```
 
 4. **Design Ontology Function with Previous Output:**
+ ![Ontogenia methodology: Multi-CQ process](ontogenia2.jpg)
+*Ontogenia methodology: Multi-CQ process*
     ```python
     def design_ontology(patterns_json, CQ, scenario, procedure, ontology_elements, previous_output=""):
         prompt = (
