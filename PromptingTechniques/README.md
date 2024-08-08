@@ -126,33 +126,3 @@ Ontogenia is designed to handle one CQ at a time, generating and merging the res
         )
     ```
 
-### Detailed Procedure for Ontology Design
-
-1. **Analyze the Competency Question:**
-    - Understand the CQ to identify key components.
-
-2. **Identify the Context:**
-    - Define the scope and domain of the ontology.
-
-3. **Decompose the Competency Question:**
-    - Break down the CQ into subject, predicate, object, and predicate nominative.
-    - Map these elements to ontological constructs.
-
-4. **Determine Subclass Relationships:**
-    - Establish subclass relationships using rdfs:subClassOf.
-
-5. **Extend the Ontology with Restrictions:**
-    - Apply restrictions like owl:allValuesFrom, owl:hasValue, and owl:someValuesFrom.
-    - Define cardinality with owl:minCardinality.
-
-6. **Define Equivalent and Disjoint Classes:**
-    - Use owl:equivalentClass and owl:disjointWith for class relationships.
-
-7. **Integrate and Refine:**
-    - Review interrelationships for logical consistency and completeness.
-
-8. **Validate and Explain:**
-    - Confirm the ontology answers all CQs and explain the reasoning behind each element.
-
-9. **Evaluate Confidence and Test:**
-    - Test the ontology with instances and assess confidence based on performance.
